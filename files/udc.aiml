@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0" xmlns:html="http://www.w3.org/1999/xhtml">
+    
+    <category>
+        <pattern>*</pattern>
+        <template>
+            <think><set name="topic">INITIAL</set></think>
+            Thank you for reaching out to me, your Computer Science Job Recommender. Please click "start" to begin. If you are not looking for a career in Computer Science, please click "end" to end this session.
+            <reply>
+                <text>Start</text>
+                <postback>START</postback>
+            </reply>
+            <reply>
+                <text>End</text>
+                <postback>END</postback>
+            </reply>
+        </template>
+    </category>
+    
+    <topic name="INITIAL">
+        <category>
+            <pattern>START</pattern>
+            <template>
+                <think><set name="topic">MATH QUESTION</set></think>
+                Great, let's get started. Many Computer Science jobs require a strong background in mathematics, do you like math?
+                <reply>
+                    <text>YES</text>
+                    <postback>YES</postback>
+                </reply>
+                <reply>
+                    <text>NO</text>
+                    <postback>NO</postback>
+                </reply>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                I'm sorry, I didn't understand that. Please click "Start" to begin or "End" to finish.
+                <reply>
+                    <text>Start</text>
+                    <postback>START</postback>
+                </reply>
+                <reply>
+                    <text>End</text>
+                    <postback>END</postback>
+                </reply>
+            </template>
+        </category>
+    </topic>
+
+    <topic name="MATH QUESTION">
+        <category>
+            <pattern>YES</pattern>
+            <template>
+                <think><set name="topic">MATH INTEREST</set></think>
+                That's great to hear! Math is very important for many Computer Science jobs. 
+                Are you more interested in practical, data-management focused application of mathematics, or the development and optimization of complicated algorithms?
+                <reply>
+                    <text>Complicated Algorithms</text>
+                    <postback>Complicated Algorithms</postback>
+                </reply>
+                <reply>
+                    <text>Data Management</text>
+                    <postback>Data Management</postback>
+                </reply>
+            </template>
+        </category>
+
+        <category>
+            <pattern>NO</pattern>
+            <template>
+                <think><set name="topic">PROGRAMMING INTEREST</set></think>
+                No worries! While mathematics is important to many computer science professions, there are many roles where math is not as heavily featured.
+                Are you more interested in programming and development, or systems management and security?
+                <reply>
+                    <text>Programming and Development</text>
+                    <postback>PROGRAM</postback>
+                </reply>
+                <reply>
+                    <text>Systems Management and Security</text>
+                    <postback>SYS</postback>
+                </reply>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                I'm sorry, I didn't understand that. Do you like math?
+                <reply>
+                    <text>YES</text>
+                    <postback>YES</postback>
+                </reply>
+                <reply>
+                    <text>NO</text>
+                    <postback>NO</postback>
+                </reply>
+            </template>
+        </category>
+    </topic>
+
+    <topic name="MATH INTEREST">
+        <category>
+            <pattern>Complicated Algorithms</pattern>
+            <template>
+                <think><set name="topic">CAREER EXPLORE</set></think>
+                That's wonderful. I think you would make an excellent Machine Learning Engineer. This field is at the cutting-edge of mathematics and modern computer science. 
+                As a Machine Learning Engineer, you will get to develop algorithms that AI programs use for training and optimization. You'll also get to flex those math skills on a day-to-day basis, as recursion and linear algebra are key concepts to master in this field.
+                Would you like to explore more career fields?        
+                <reply>
+                    <text>Explore More</text>
+                    <postback>EXPLORE</postback>
+                </reply>
+                <reply>
+                    <text>No, I'm Done</text>
+                    <postback>FINISHED</postback>
+                </reply>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>Data Management</pattern>
+            <template>
+                <think><set name="topic">CAREER EXPLORE</set></think>
+                Awesome! With that in mind, I believe you would be well-suited for a job as a Data Scientist. Data Scientists get to collect and analyze large collections of data, and use it to help organizations make important decisions.
+                Would you like to explore more career fields?  
+                <reply>
+                    <text>Explore More</text>
+                    <postback>EXPLORE</postback>
+                </reply>
+                <reply>
+                    <text>No, I'm Done</text>
+                    <postback>FINISHED</postback>
+                </reply>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                I'm sorry, I didn't understand that. Are you more interested in Complicated Algorithms or Data Management?
+                <reply>
+                    <text>Complicated Algorithms</text>
+                    <postback>Complicated Algorithms</postback>
+                </reply>
+                <reply>
+                    <text>Data Management</text>
+                    <postback>Data Management</postback>
+                </reply>
+            </template>
+        </category>
+    </topic>
+
+    <topic name="PROGRAMMING INTEREST">
+        <category>
+            <pattern>PROGRAM</pattern>
+            <template>
+                <think><set name="topic">PROGRAMMING  FOCUS</set></think>
+                Programming is an exciting career field, with many opportunities. Do you like to create and curate interfaces for users, and have an eye for design?
+                Or, would you describe yourself more as a technically-minded, systems and performance focused programmer?
+                <reply>
+                    <text>I Have an Eye for Design</text>
+                    <postback>UX DESIGN</postback>
+                </reply>
+                <reply>
+                    <text>I Am Focused on Systems and Performance</text>
+                    <postback>BACK END</postback>
+                </reply>
+            </template>
+        </category>
+
+        <category>
+            <pattern>SYS</pattern>
+            <template>
+                <think><set name="topic">SYSTEMS FOCUS</set></think>
+                Every organization needs talented experts with a keen eye for detail to handle networking, cybersecurity, and day-to-day systems management.
+                Do you think that it would be exciting to be going on the hunt for weaknesses in a network or organization?
+                Or, would you rather spend your time maintaining and upgrading networks and systems?
+                <reply>
+                    <text>I Want to Hunt for Weaknesses</text>
+                    <postback>PEN TEST</postback>
+                </reply>
+                <reply>
+                    <text>I Love Upgrading Systems/Networks</text>
+                    <postback>ADMIN</postback>
+                </reply>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                I'm sorry, I didn't understand that. Are you more interested in Programming and Development or Systems Management and Security?
+                <reply>
+                    <text>Programming and Development</text>
+                    <postback>PROGRAM</postback>
+                </reply>
+                <reply>
+                    <text>Systems Management and Security</text>
+                    <postback>SYS</postback>
+                </reply>
+            </template>
+        </category>
+    </topic>
+
+    <topic name="PROGRAMMING FOCUS">
+        <category>
+            <pattern>UX DESIGN</pattern>
+            <template>
+                <think><set name="topic">CAREER EXPLORE</set></think>
+                In that case, I would recommend that you look into a career as a UX Designer. In this role, you will get to design and implement user-facing elements of programs and applications.
+                This gives you the opportunity to showcase not just your technical expertise, but your creative side as well! Would you like to explore other career fields?
+                <reply>
+                    <text>Explore More</text>
+                    <postback>EXPLORE</postback>
+                </reply>
+                <reply>
+                    <text>No, I'm Done</text>
+                    <postback>FINISHED</postback>
+                </reply>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>BACK END</pattern>
+            <template>
+                <think><set name="topic">CAREER EXPLORE</set></think>
+                Excellent, I think that you would be a fantastic back-end developer. In this position, you will be able to build, maintain, and optimize the systems that organizations use every day!
+                You'll likely be writing a lot of code, and spending your time ensuring that everything continues to work as expected, throughout development cycles.
+                Would you like to explore more career fields?
+                <reply>
+                    <text>Explore More</text>
+                    <postback>EXPLORE</postback>
+                </reply>
+                <reply>
+                    <text>No, I'm Done</text>
+                    <postback>FINISHED</postback>
+                </reply>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                I'm sorry, I didn't understand that. Do you have an eye for design or are you focused on systems and performance?
+                <reply>
+                    <text>I Have an Eye for Design</text>
+                    <postback>UX DESIGN</postback>
+                </reply>
+                <reply>
+                    <text>I Am Focused on Systems and Performance</text>
+                    <postback>BACK END</postback>
+                </reply>
+            </template>
+        </category>
+    </topic>
+
+    <topic name="SYSTEMS FOCUS">
+        <category>
+            <pattern>PEN TEST</pattern>
+            <template>
+                <think><set name="topic">CAREER EXPLORE</set></think>
+                I think you would be an ideal fit for the exciting life of a penetration tester! Penetration Testers are also referred to as ethical hackers, and use their skillset in offensive cybersecurity to simulate cyberattacks.
+                These simulated attacks help organizations to harden their systems against the real bad guys out in the world. You could make a real impact in the future of internet security as a penetration tester.
+                Would you like to explore more career fields?
+                <reply>
+                    <text>Explore More</text>
+                    <postback>EXPLORE</postback>
+                </reply>
+                <reply>
+                    <text>No, I'm Done</text>
+                    <postback>FINISHED</postback>
+                </reply>
+            </template>
+        </category>
+
+        <category>
+            <pattern>ADMIN</pattern>
+            <template>
+                <think><set name="topic">CAREER EXPLORE</set></think>
+                You would be a great Network Administrator. Network Administrators are responsible for an organization's computer network. They ensure that the network is secure, online, and functioning as intended.
+                This role requires lots of collaboration with leadership, a watchful eye for any issues, and dedication to protection of company resources.
+                Would you like to explore more career fields?
+                <reply>
+                    <text>Explore More</text>
+                    <postback>EXPLORE</postback>
+                </reply>
+                <reply>
+                    <text>No, I'm Done</text>
+                    <postback>FINISHED</postback>
+                </reply>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                I'm sorry, I didn't understand that. Do you want to hunt for weaknesses or love upgrading systems/networks?
+                <reply>
+                    <text>I Want to Hunt for Weaknesses</text>
+                    <postback>PEN TEST</postback>
+                </reply>
+                <reply>
+                    <text>I Love Upgrading Systems/Networks</text>
+                    <postback>ADMIN</postback>
+                </reply>
+            </template>
+        </category>
+    </topic>
+
+    <topic name="CAREER EXPLORE">
+        <category>
+            <pattern>EXPLORE</pattern>
+            <template>
+            There are many other roles currently available for computer science graduates. 
+            Here is a link to more information about other roles in the industry. Thank you for speaking with me today!
+            <link>
+            <text>More Computer Science Roles</text>
+            <url>https://www.computerscience.org/careers/</url>
+        </link>
+        <br/>Would you like to start over? Please click "Start" to begin or "End" to finish.
+                <reply>
+                <text>Start</text>
+                <postback>START</postback>
+                </reply>
+                <reply>
+                <text>End</text>
+                <postback>END</postback>
+                </reply>
+            </template>
+        </category>
+        
+        <category>
+            <pattern>FINISHED</pattern>
+            <template>
+                Thank you for taking the time to talk to me about your future in Computer Science. Have a terrific rest of your day!
+                <think><set name="topic">INITIAL</set></think>
+                <br/>Would you like to start over? Please click "Start" to begin or "End" to finish.
+                <reply>
+                <text>Start</text>
+                <postback>START</postback>
+                </reply>
+                <reply>
+                    <text>End</text>
+                    <postback>END</postback>
+                </reply>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                I'm sorry, I didn't understand that. Would you like to explore more career fields or are you finished?
+                <reply>
+                    <text>Explore More</text>
+                    <postback>EXPLORE</postback>
+                </reply>
+                <reply>
+                    <text>No, I'm Done</text>
+                    <postback>FINISHED</postback>
+                </reply>
+            </template>
+        </category>
+    </topic>
+
+        <category>
+            <pattern>END</pattern>
+            <template>
+             Thank you for reaching out to me, your Computer Science Job Recommender.
+            <think><set name="topic">INITIAL</set></think>
+            <br/>Would you like to learn more about Computer Science jobs? Please click "Start" to begin. Otherwise, you may close this chat.
+                <reply>
+                    <text>Start</text>
+                    <postback>START</postback>
+                </reply>
+            </template>
+    </category>
+</aiml>
